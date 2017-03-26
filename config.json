@@ -1,5 +1,4 @@
 {
-  "domain_name": "wacker.io",
   "ttl": "300",
   "cname_records": [
     {

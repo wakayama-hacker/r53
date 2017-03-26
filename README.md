@@ -8,7 +8,3 @@
 
 * 削除には対応していません。
 * CNAME レコードのみに対応しています。
-
-```
-travis encrypt AWS_ACCESS_KEY_ID="xxxx" AWS_SECRET_ACCESS_KEY="xxxx"
-```
