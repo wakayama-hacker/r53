@@ -12,30 +12,20 @@ const update_r53 = (HostedZoneId) => {
   }
 
   config.cname_records.forEach((cname) => {
-    if (cname.value) {
-      const change = {
-        Action: 'UPSERT',
-        ResourceRecordSet: {
-          Name: cname.name,
-          ResourceRecords: [
-            {
-              Value: cname.value
-            }
-          ],
-          TTL: config.ttl,
-          Type: 'CNAME'
-        }
+    const change = {
+      Action: 'UPSERT',
+      ResourceRecordSet: {
+        Name: cname.name,
+        ResourceRecords: [
+          {
+            Value: cname.value
+          }
+        ],
+        TTL: config.ttl,
+        Type: 'CNAME'
       }
-      params.ChangeBatch.Changes.push(change)
-    } else {
-      const change = {
-        Action: 'DELETE',
-        ResourceRecordSet: {
-          Name: cname.name
-        }
-      }
-      params.ChangeBatch.Changes.push(change)
     }
+    params.ChangeBatch.Changes.push(change)
   })
 
   const promise = route53.changeResourceRecordSets(params).promise();
