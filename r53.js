@@ -7,8 +7,6 @@ const params = {
   MaxItems: "1"
 }
 
-const listHostedZonesByName = route53.listHostedZonesByName(params).promise();
-
 const update_r53 = (HostedZoneId) => {
   const params = {
     HostedZoneId: HostedZoneId,
@@ -43,6 +41,8 @@ const update_r53 = (HostedZoneId) => {
     process.exit(1);
   });
 }
+
+const listHostedZonesByName = route53.listHostedZonesByName(params).promise();
 
 listHostedZonesByName.then((data) => {
   if (data.HostedZones.length) {
