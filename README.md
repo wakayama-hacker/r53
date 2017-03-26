@@ -5,7 +5,6 @@
 r53.js allows you to insert/update DNS records by JSON.
 
 * It can update `CNAME` records only.
-* It can't delete records, so you have to delete the record manually.
 
 ## How to set up
 
@@ -53,6 +52,15 @@ Update `config.json` like following.
     }
   ]
 }
+```
+
+If you want to delete a record, set empty value like following.
+
+```
+    {
+      "name": "kushimap.wacker.io",
+      "value": ""
+    }
 ```
 
 ### Add IAM credentials as environment variables into Travis CI
