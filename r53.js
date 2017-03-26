@@ -47,7 +47,7 @@ const delete_record = (HostedZoneId) => {
       HostedZoneId: HostedZoneId,
       ChangeBatch: {
         Changes: [],
-        Comment: "Updated by r53.js"
+        Comment: "Deleted by r53.js"
       }
     }
 
@@ -68,13 +68,15 @@ const delete_record = (HostedZoneId) => {
       }
     })
 
-    const promise = route53.changeResourceRecordSets(params).promise();
-    promise.then((data) => {
-      console.log(data)
-    }).catch((err) => {
-      console.log(err);
-      process.exit(1);
-    });
+    if (params.ChangeBatch.Changes.length)
+      const promise = route53.changeResourceRecordSets(params).promise();
+      promise.then((data) => {
+        console.log(data)
+      }).catch((err) => {
+        console.log(err);
+        process.exit(1);
+      });
+    }
   }).catch((err) => {
     console.log(err);
     process.exit(1);
