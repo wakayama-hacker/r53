@@ -20,7 +20,8 @@ Create an IAM policy on AWS management console like following.
             "Sid": "Stmt1490535720000",
             "Effect": "Allow",
             "Action": [
-                "route53:ChangeResourceRecordSets"
+                "route53:ChangeResourceRecordSets",
+                "route53:ListResourceRecordSets"
             ],
             "Resource": [
                 "arn:aws:route53:::hostedzone/<Your Hosted Zone ID>"
@@ -54,14 +55,7 @@ Update `config.json` like following.
 }
 ```
 
-If you want to delete a record, set empty value like following.
-
-```
-    {
-      "name": "kushimap.wacker.io",
-      "value": ""
-    }
-```
+If you want to delete a record, please delete the entry from `config.json`.
 
 ### Add IAM credentials as environment variables into Travis CI
 
