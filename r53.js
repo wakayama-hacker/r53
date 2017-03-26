@@ -68,7 +68,7 @@ const delete_record = (HostedZoneId) => {
       }
     })
 
-    if (params.ChangeBatch.Changes.length)
+    if (params.ChangeBatch.Changes.length) {
       const promise = route53.changeResourceRecordSets(params).promise();
       promise.then((data) => {
         console.log(data)
