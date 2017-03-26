@@ -1,0 +1,18 @@
+{
+  "domain_name": "wacker.io",
+  "ttl": "300",
+  "cname_records": [
+    {
+      "name": "wmap.wacker.io",
+      "value": "wakayama-hacker.github.io"
+    },
+    {
+      "name": "latlng.wacker.io",
+      "value": "wakayama-hacker.github.io"
+    },
+    {
+      "name": "kushimap.wacker.io",
+      "value": "miya0001.github.io"
+    }
+  ]
+}
