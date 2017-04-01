@@ -4,7 +4,7 @@
 
 r53.js allows you to insert/update DNS records by JSON.
 
-* It can update `CNAME` records only.
+* It can update `A` and `CNAME` records only.
 
 ## Getting Started
 
@@ -49,25 +49,56 @@ Update `config.json` like following.
 
 ```
 {
-  "ttl": "300",
-  "cname_records": [
+  "records": [
     {
-      "name": "wmap.wacker.io",
-      "value": "wakayama-hacker.github.io"
+      "Name": "wacker.io",
+      "Type": "A",
+      "TTL": "300",
+      "ResourceRecords": [
+        {
+          "Value": "192.30.252.153"
+        },
+        {
+          "Value": "192.30.252.154"
+        }
+      ]
     },
     {
-      "name": "latlng.wacker.io",
-      "value": "wakayama-hacker.github.io"
+      "Name": "wmap.wacker.io",
+      "Type": "CNAME",
+      "TTL": "300",
+      "ResourceRecords": [
+        {
+          "Value": "wakayama-hacker.github.io"
+        }
+      ]
     },
     {
-      "name": "kushimap.wacker.io",
-      "value": "miya0001.github.io"
+      "Name": "latlng.wacker.io",
+      "Type": "CNAME",
+      "TTL": "300",
+      "ResourceRecords": [
+        {
+          "Value": "wakayama-hacker.github.io"
+        }
+      ]
+    },
+    {
+      "Name": "kushimap.wacker.io",
+      "Type": "CNAME",
+      "TTL": "300",
+      "ResourceRecords": [
+        {
+          "Value": "miya0001.github.io"
+        }
+      ]
     }
   ]
 }
 ```
 
-If you want to delete a record, please delete the entry from `config.json`.
+* If you want to delete a record, please delete the entry from `config.json`.
+* For more information of the `ResourceRecords`, please see [ for the `changeResourceRecordSets`](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Route53.html#changeResourceRecordSets-property).
 
 ### Add IAM credentials as environment variables into Travis CI
 

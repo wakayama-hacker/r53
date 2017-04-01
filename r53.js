@@ -11,18 +11,14 @@ const update_record = (HostedZoneId) => {
     }
   }
 
-  config.cname_records.forEach((cname) => {
+  config.records.forEach((record) => {
     const change = {
       Action: 'UPSERT',
       ResourceRecordSet: {
-        Name: cname.name,
-        ResourceRecords: [
-          {
-            Value: cname.value
-          }
-        ],
-        TTL: config.ttl,
-        Type: 'CNAME'
+        Name: record.Name,
+        ResourceRecords: record.ResourceRecords,
+        TTL: record.TTL,
+        Type: record.Type
       }
     }
     params.ChangeBatch.Changes.push(change)
@@ -51,14 +47,14 @@ const delete_record = (HostedZoneId) => {
       }
     }
 
-    const cnames = []
-    config.cname_records.forEach((cname) => {
-      cnames.push(cname.name)
+    const names = []
+    config.records.forEach((record) => {
+      names.push(record.Name)
     })
 
     records.ResourceRecordSets.forEach((record) => {
-      if ('CNAME' === record.Type) {
-        if (-1 === cnames.indexOf(record.Name.replace(/\.$/, ''))) {
+      if ('CNAME' === record.Type || 'A' === record.Type) {
+        if (-1 === names.indexOf(record.Name.replace(/\.$/, ''))) {
           const change = {
             Action: 'DELETE',
             ResourceRecordSet: record

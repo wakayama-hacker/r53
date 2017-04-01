@@ -1,17 +1,47 @@
 {
-  "ttl": "300",
-  "cname_records": [
+  "records": [
     {
-      "name": "wmap.wacker.io",
-      "value": "wakayama-hacker.github.io"
+      "Name": "wacker.io",
+      "Type": "A",
+      "TTL": "300",
+      "ResourceRecords": [
+        {
+          "Value": "192.30.252.153"
+        },
+        {
+          "Value": "192.30.252.154"
+        }
+      ]
     },
     {
-      "name": "latlng.wacker.io",
-      "value": "wakayama-hacker.github.io"
+      "Name": "wmap.wacker.io",
+      "Type": "CNAME",
+      "TTL": "300",
+      "ResourceRecords": [
+        {
+          "Value": "wakayama-hacker.github.io"
+        }
+      ]
     },
     {
-      "name": "kushimap.wacker.io",
-      "value": "miya0001.github.io"
+      "Name": "latlng.wacker.io",
+      "Type": "CNAME",
+      "TTL": "300",
+      "ResourceRecords": [
+        {
+          "Value": "wakayama-hacker.github.io"
+        }
+      ]
+    },
+    {
+      "Name": "kushimap.wacker.io",
+      "Type": "CNAME",
+      "TTL": "300",
+      "ResourceRecords": [
+        {
+          "Value": "miya0001.github.io"
+        }
+      ]
     }
   ]
 }
